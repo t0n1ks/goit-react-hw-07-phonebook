@@ -6,7 +6,7 @@ import Filter from '../Filter/Filter';
 import ContactList from '../ContactList/ContactList';
 import s from '../App/App.module/App.module.css';
 
-// Оновлені імпорти для взаємодії з бекендом
+
 import { createContact, deleteContact as deleteContactApi, fetchContacts } from '../api/api';
 
 const App = () => {
@@ -15,14 +15,14 @@ const App = () => {
   const filter = useSelector((state) => state.contacts.filter);
 
   useEffect(() => {
-    // Отримуємо контакти з бекенду при завантаженні компонента
+  
     const fetchAndSetContacts = async () => {
       try {
-        await fetchContacts(); // Відправляємо GET-запит до бекенду для отримання контактів
-        // Ваш код для збереження отриманих контактів у стані Redux
+        await fetchContacts(); 
+        
       } catch (error) {
         console.error('Error fetching contacts:', error);
-        // Обробка помилки при отриманні контактів з бекенду
+        
       }
     };
 
@@ -31,23 +31,23 @@ const App = () => {
 
   const handleAddContact = async (contact) => {
     try {
-      // Відправляємо POST-запит до бекенду для додавання контакту
-      const addedContact = await createContact(contact); // Ваш код для відправки контакту на бекенд і отримання відповіді
-      dispatch(addContact(addedContact)); // Викликаємо дію addContact при успішному додаванні на бекенді
+     
+      const addedContact = await createContact(contact); 
+      dispatch(addContact(addedContact)); 
     } catch (error) {
       console.error('Error adding contact:', error);
-      // Обробка помилки при додаванні контакту на бекенді
+     
     }
   };
 
   const handleDeleteContact = async (id) => {
     try {
-      // Відправляємо DELETE-запит до бекенду для видалення контакту
-      await deleteContactApi(id); // Ваш код для видалення контакту на бекенді
-      dispatch(deleteContact(id)); // Викликаємо дію deleteContact при успішному видаленні на бекенді
+      
+      await deleteContactApi(id); 
+      dispatch(deleteContact(id)); 
     } catch (error) {
       console.error('Error deleting contact:', error);
-      // Обробка помилки при видаленні контакту на бекенді
+   
     }
   };
 

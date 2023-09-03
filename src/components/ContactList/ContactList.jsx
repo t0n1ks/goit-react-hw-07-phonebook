@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from '../contactsSlice/contactsSlice';
 import s from '../ContactList/ContactList.module/ContactList.module.css';
 
-// Оновлені імпорти для видалення контакту
-import { deleteContact as deleteContactApi } from '../api/api'; // Залежно від вашої структури проекту та служби API
+
+import { deleteContact as deleteContactApi } from '../api/api'; 
 
 const ContactList = () => {
   const contacts = useSelector(state => state.contacts.items);
@@ -17,12 +17,12 @@ const ContactList = () => {
 
   const handleDeleteContact = async (id) => {
     try {
-      // Відправляємо DELETE-запит до бекенду для видалення контакту
+     
       await deleteContactApi(id);
-      dispatch(deleteContact(id)); // Викликаємо дію deleteContact при успішному видаленні з бекенду
+      dispatch(deleteContact(id)); 
     } catch (error) {
       console.error('Error deleting contact:', error);
-      // Обробка помилки при видаленні контакту
+      
     }
   };
 
@@ -35,7 +35,7 @@ const ContactList = () => {
           </p>
           <button
             type="button"
-            onClick={() => handleDeleteContact(contact.id)} // Викликаємо функцію для видалення контакту
+            onClick={() => handleDeleteContact(contact.id)} 
             className={s.button}
           >
             Delete

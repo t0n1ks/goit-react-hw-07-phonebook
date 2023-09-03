@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../contactsSlice/contactsSlice';
 import s from './ContactForm.module/ContactForm.module.css';
 
-// Оновлений імпорт для взаємодії з бекендом
+
 import { createContact } from '../api/api';
 
 const ContactForm = () => {
@@ -42,14 +42,14 @@ const ContactForm = () => {
     }
 
     try {
-      // Відправляємо POST-запит до бекенду для додавання контакту
-      const addedContact = await createContact({ name, number }); // Ваш код для відправки контакту на бекенд і отримання відповіді
-      dispatch(addContact(addedContact)); // Викликаємо дію addContact при успішному додаванні на бекенді
+     
+      const addedContact = await createContact({ name, number }); 
+      dispatch(addContact(addedContact)); 
       setName('');
       setNumber('');
     } catch (error) {
       console.error('Error adding contact:', error);
-      // Обробка помилки при додаванні контакту на бекенді
+
     }
   };
 

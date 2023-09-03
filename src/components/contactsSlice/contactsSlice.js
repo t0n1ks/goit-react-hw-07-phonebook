@@ -1,15 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios'; // Імпортуємо Axios для HTTP-запитів
+import axios from 'axios'; 
 
-// Оголошуємо початковий стан
+
 const initialState = {
   items: [],
   filter: '',
-  isLoading: false, // Додаємо індикатор завантаження
-  error: null, // Додаємо обробку помилок
+  isLoading: false, 
+  error: null,
 };
 
-// Оголошуємо операцію для отримання контактів з бекенду
+
 export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
   try {
     const response = await axios.get('https://64f4b952932537f4051aa365.mockapi.io/api/contacts');
@@ -39,16 +39,16 @@ const contactsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, (state) => {
-        state.isLoading = true; // Увімкнути індикатор завантаження
-        state.error = null; // Знищити попередню помилку, якщо є
+        state.isLoading = true; 
+        state.error = null; 
       })
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
-        state.items = payload; // Оновити список контактів
-        state.isLoading = false; // Вимкнути індикатор завантаження
+        state.items = payload; 
+        state.isLoading = false; 
       })
       .addCase(fetchContacts.rejected, (state, { error }) => {
-        state.isLoading = false; // Вимкнути індикатор завантаження
-        state.error = error.message; // Зберегти повідомлення про помилку
+        state.isLoading = false; 
+        state.error = error.message; 
       });
   },
 });
