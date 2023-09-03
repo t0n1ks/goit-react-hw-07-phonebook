@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeFilter } from '../contactsSlice/contactsSlice';
+import { changeFilter } from '../../redux/contactsSlice/contactsSlice';
 import s from '../Filter/Filter.module/Filter.module.css';
 
 
-import { fetchContacts } from '../api/api'; 
+import { fetchContacts } from '../../api/api'; 
 
 const Filter = () => {
   const filter = useSelector(state => state.contacts.filter);

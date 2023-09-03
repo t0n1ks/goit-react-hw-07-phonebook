@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../contactsSlice/contactsSlice';
+import { addContact } from '../../redux/contactsSlice/contactsSlice';
 import s from './ContactForm.module/ContactForm.module.css';
 
 
-import { createContact } from '../api/api';
+import { createContact } from '../../api/api';
 
 const ContactForm = () => {
   const [name, setName] = useState('');

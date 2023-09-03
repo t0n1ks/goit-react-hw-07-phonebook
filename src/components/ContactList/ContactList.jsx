@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../contactsSlice/contactsSlice';
+import { deleteContact } from '../../redux/contactsSlice/contactsSlice';
 import s from '../ContactList/ContactList.module/ContactList.module.css';
 
 
-import { deleteContact as deleteContactApi } from '../api/api'; 
+import { deleteContact as deleteContactApi } from '../../api/api'; 
 
 const ContactList = () => {
   const contacts = useSelector(state => state.contacts.items);

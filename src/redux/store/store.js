@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import contactsReducer, { fetchContacts } from '../contactsSlice/contactsSlice'; 
 import storage from 'redux-persist/lib/storage';
 import { persistStore, persistReducer } from 'redux-persist';
-import thunk from 'redux-thunk';
+import {validateContactMiddleware} from '../../redux/middleware/ValidationMiddleware'
 
 const persistConfig = {
   key: 'contacts',
@@ -16,7 +16,10 @@ const rootReducer = {
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [thunk],
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware(
+    {serializableCheck: false,})
+    .concat(validateContactMiddleware),
   devTools: process.env.NODE_ENV === 'development',
 });
 
