@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contactsSlice/contactsSlice';
-import s from '../ContactList/ContactList.module/ContactList.module.css';
-
+import s from './ContactList.module/ContactList.module.css'; 
 
 import { deleteContact as deleteContactApi } from '../../api/api'; 
 
@@ -17,12 +16,10 @@ const ContactList = () => {
 
   const handleDeleteContact = async (id) => {
     try {
-     
       await deleteContactApi(id);
       dispatch(deleteContact(id)); 
     } catch (error) {
       console.error('Error deleting contact:', error);
-      
     }
   };
 

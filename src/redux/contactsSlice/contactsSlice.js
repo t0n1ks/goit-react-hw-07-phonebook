@@ -9,7 +9,6 @@ const initialState = {
   error: null,
 };
 
-
 export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
   try {
     const response = await axios.get('https://64f4b952932537f4051aa365.mockapi.io/api/contacts');
@@ -39,19 +38,20 @@ const contactsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, (state) => {
-        state.isLoading = true; 
-        state.error = null; 
+        state.isLoading = true;
+        state.error = null;
       })
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
-        state.items = payload; 
-        state.isLoading = false; 
+        state.items = payload;
+        state.isLoading = false;
       })
       .addCase(fetchContacts.rejected, (state, { error }) => {
-        state.isLoading = false; 
-        state.error = error.message; 
+        state.isLoading = false;
+        state.error = error.message;
       });
   },
 });
 
 export const { addContact, deleteContact, changeFilter } = contactsSlice.actions;
 export default contactsSlice.reducer;
+
